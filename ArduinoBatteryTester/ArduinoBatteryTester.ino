@@ -1,8 +1,10 @@
 /* EVERY 30s log data
+ * Outputs a comma seperated value text file which can be used to make graphs
+ * 
  ** MOSI - pin 11
  ** MISO - pin 12
  ** CLK - pin 13
- ** CS - pin 4 (for MKRZero SD: SDCARD_SS_PIN)
+ ** CS - pin 4
  * 
  ** A0 - Battery voltage
  ** A1 - Battery charge module output voltage (across the discharge resistor)
@@ -15,7 +17,7 @@
 #define LED_RED 5           // Red pin
 #define LED_YELLOW 3        // Yellow pin
 #define LED_GREEN 2         // Green pin
-#define CUTOFF_VOLTAGE 3.2  // Volts
+#define CUTOFF_VOLTAGE 3.0  // Volts
 #define filename "test.txt"
 
 File myFile;
@@ -29,7 +31,7 @@ void setup() {
   pinMode(11, OUTPUT);
   pinMode(12, INPUT_PULLUP);
   pinMode(13, OUTPUT);
-  setLED(0,1,0); // r, y, g
+  setLED(0,1,0); // red, yellow, green enable
 
   ///// SERIAL ////////////////////////////////
   Serial.begin(9600);
